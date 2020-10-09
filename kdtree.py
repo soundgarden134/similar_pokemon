@@ -158,8 +158,8 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
                         if new_pokelist[0][0] > dist:
                             new_pokelist[0] = [dist, pokemon.left]
                             new_nodes.append(pokemon.left)
-                        else:                                  #si se descomenta esto busca todo el arbol 
-                            new_nodes.append(pokemon.left)
+                  #      else:                                  #si se descomenta esto busca todo el arbol 
+                    #        new_nodes.append(pokemon.left)
 
                 if pokemon.right and not pokemon.right.visited: #si hay nodo a la derecha no visitado
                     if len(new_pokelist) < k:
@@ -171,8 +171,8 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
                         if new_pokelist[0][0] > dist:
                             new_pokelist[0] = [dist, pokemon.right]
                             new_nodes.append(pokemon.right)
-                        else:
-                            new_nodes.append(pokemon.right)
+                    #    else:  #descomentar para buscar todo el arbol
+                       #     new_nodes.append(pokemon.right)
             nodes_to_check = new_nodes
         return new_pokelist
                     
@@ -193,6 +193,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         for pokemon in self.vectorized_pokemons:
             if id == pokemon[0]:
                 searched_pokemon = PokeNode(pokemon[0], pokemon[1], pokemon[2:])
+                print(pokemon[2:])
                 pokelist = self.search_knp(searched_pokemon, k)
                 
         
@@ -205,8 +206,13 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         
     def search_k_closest_pokemons_vector(self, vector, k):
         node = PokeNode('Example', 'Example', vector)
+        print(node.poke_data)
         pokelist = self.search_knp(node, k)        
-        
+        poke_ids = []
+        for poke in pokelist:
+            poke_ids.append(poke[1].poke_id)
+        for i in poke_ids:
+            self.search_pokemon_by_id(i)        
   
                                 
 poke_tree = Pokedex(7) #inicializa poketree de 45 dimensiones       
