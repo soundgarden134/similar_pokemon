@@ -125,8 +125,6 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         for pokemon in pokelist:
             pokelist = self.search_subtree(pokemon[1], pokelist, k, node)
         
-        for i in pokelist:
-            print(i[0])
         return pokelist
 
     
