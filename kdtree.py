@@ -124,6 +124,9 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
 
         for pokemon in pokelist:
             pokelist = self.search_subtree(pokemon[1], pokelist, k, node)
+        
+        for i in pokelist:
+            print(i[0])
         return pokelist
 
     
@@ -133,7 +136,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         for i in range(7): #para atributos no categoricos normalizados
             dist += abs(float(node1.poke_data[i]) - float(node2.poke_data[i])) 
         while i < 45:     #compara atributos categoricos por un criterio de tipo Jacard
-            if node1.poke_data[i] == node2.poke_data[i]:
+            if node1.poke_data[i] == node2.poke_data[i] and node1.poke_data[i] == 1:
                 dist-= 0.7 #factor arbitrario por ser del mismo tipo o legendarios
             i+=1
         
