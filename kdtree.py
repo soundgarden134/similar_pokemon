@@ -197,7 +197,6 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         for pokemon in self.vectorized_pokemons:
             if id == pokemon[0]:
                 searched_pokemon = PokeNode(pokemon[0], pokemon[1], pokemon[2:])
-                print(pokemon[2:])
                 pokelist = self.search_knp(searched_pokemon, k)
                 
         
