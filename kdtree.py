@@ -161,8 +161,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
                             new_nodes.append(pokemon.left)
                         if new_pokelist[0][0]*1.2 > dist: #pequeño ajuste para que busque si la distancia no es tanta)
                             new_pokelist[0] = [dist, pokemon.left]
-                  #      else:                                  #si se descomenta esto busca todo el arbol 
-                    #        new_nodes.append(pokemon.left)
+
 
                 if pokemon.right and not pokemon.right.visited: #si hay nodo a la derecha no visitado
                     if len(new_pokelist) < k:
@@ -176,8 +175,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
                             new_nodes.append(pokemon.right)
                         if new_pokelist[0][0]*1.2 > dist:
                             new_pokelist[0] = [dist, pokemon.right]
-                    #    else:  #descomentar para buscar todo el arbol
-                       #     new_nodes.append(pokemon.right)
+
             nodes_to_check = new_nodes
         return new_pokelist
                     
@@ -218,7 +216,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
             self.search_pokemon_by_id(i)        
   
                                 
-poke_tree = Pokedex(7) #inicializa poketree de 45 dimensiones       
+poke_tree = Pokedex(7) #inicializa poketree de 7 dimensiones       
 poke_tree.pokemons = pokemon_db
 poke_tree.vectorized_pokemons = poke_list
 for pokemon in poke_list:
