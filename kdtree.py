@@ -30,7 +30,7 @@ poke_list = vector_db.values.tolist()
 
 random.shuffle(poke_list)  #se desordena la lista para que el arbol quede balanceado
 
-class PokeNode:
+class PokeNode:      #clase que almacena datos de un pokemon
     poke_id = 0
     poke_name = None
     right = None
@@ -48,11 +48,11 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
     root = None
     dim = 0
     pokemons = []  #aca se almacenan todos los pokemon para buscar sus datos por id
-    vectorized_pokemons = []
+    vectorized_pokemons = []  #aca se almacenan los pokemon de forma vectorizada
     def __init__(self, dim):
         self.dim = dim
         
-    def insert(self, node):
+    def insert(self, node):    #insercion de un nodo
         i = 0
         current_node = self.root
         if not self.root:
@@ -141,7 +141,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         
         return dist
                     
-    def search_subtree(self, node, pokelist, k, search_node):
+    def search_subtree(self, node, pokelist, k, search_node):  #busca en un subarbol de la lista de nodos prometedores
         new_pokelist = pokelist
         nodes_to_check = []
         nodes_to_check.append(node)
@@ -215,7 +215,7 @@ class Pokedex:  #en realidad es un kd tree pero le puse pokedex para ser pokecon
         for i in poke_ids:
             self.search_pokemon_by_id(i)        
   
-                                
+##INICIALIZANDO POKEDEX"                               
 poke_tree = Pokedex(7) #inicializa poketree de 7 dimensiones       
 poke_tree.pokemons = pokemon_db
 poke_tree.vectorized_pokemons = poke_list
